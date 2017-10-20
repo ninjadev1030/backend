@@ -101,6 +101,16 @@ var legacy = "mongodb://13.210.31.113:27017/noisqldev";
                         );
     });
 
+    app.post('/updateProduct', function (req, res) {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+      res.header('Access-Control-Allow-Headers', 'Content-Type');
+      res.setHeader('Content-Type', 'application/json');
+
+      stripe.products.update(req.body.id, {attributes: {featuredProduct: req.body.featured}});
+      return true;
+    });
+
 
 ////////////////////////////////////////////////////////////////////////////////
         // Edit Product
